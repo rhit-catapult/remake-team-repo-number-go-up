@@ -4,7 +4,7 @@ import random
 import time
 import math
 
-amount = 0
+
 def distance(point1, point2):
     point1_x = point1[0]
     point2_x = point2[0]
@@ -16,7 +16,8 @@ def main():
     pygame.init()
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
-
+    amount = 0
+    amount_click = 1
     clock = pygame.time.Clock()
     while True:
         clock.tick(60)
@@ -27,7 +28,7 @@ def main():
                 mousepos = pygame.mouse.get_pos()
                 distance1 = distance(mousepos, (screen.get_width()//4, screen.get_height()//2))
                 if distance1 < screen.get_width()//8:
-                    pass
+                    amount = amount + amount_click
 
         screen.fill((255, 255, 255))
 
@@ -42,8 +43,8 @@ def main():
         pygame.draw.line(screen, (255, 0, 0), (screen.get_width(), 0), (screen.get_width(), screen.get_height()),
                          8)
         pygame.draw.circle(screen, (0, 0, 0), (screen.get_width()/4, screen.get_height()/2), screen.get_width()/8)
-        font2 = pygame.font.SysFont("Arial", 40)
-        caption2 = font2.render("Amount:" + amount, True, (0, 0, 255))
+        font2 = pygame.font.SysFont("Arial", 30)
+        caption2 = font2.render("Amount: " + str(amount), True, (0, 0, 255))
         screen.blit(caption2, (screen.get_width()//4, screen.get_height()//4))
         pygame.display.update()
 
