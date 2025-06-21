@@ -12,9 +12,10 @@ def main():
     # create a screen
     pygame.display.set_caption("NGU's Project")
     # TODO: Change the size of the screen as you see fit!
-    screen = pygame.display.set_mode((640, 480))
+    screen = pygame.display.set_mode((800, 600))
+
     # creates a Character from the my_character.py file
-    character = my_character.Character(screen, 100, 100)
+
 
     # let's set the framerate
     clock = pygame.time.Clock()
@@ -30,8 +31,17 @@ def main():
         screen.fill((255, 255, 255))
 
         # draws the character every frame
-        character.draw()
 
+        pygame.draw.line(screen, (255, 0, 0), (screen.get_width() / 2, 0), (screen.get_width() / 2, screen.get_height()),
+                         10)
+        pygame.draw.line(screen, (255, 0, 0), (0, 0), (screen.get_width(), 0),
+                         8)
+        pygame.draw.line(screen, (255, 0, 0), (0, 0), (0, screen.get_height()),
+                         8)
+        pygame.draw.line(screen, (255, 0, 0), (0, screen.get_height()), (screen.get_width(), screen.get_height()),
+                         8)
+        pygame.draw.line(screen, (255, 0, 0), (screen.get_width(), 0), (screen.get_width(), screen.get_height()),
+                         8)
         # TODO: Add your project code
 
         # don't forget the update, otherwise nothing will show up!
