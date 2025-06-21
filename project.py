@@ -3,6 +3,8 @@ import sys
 import random
 import time
 import math
+
+amount = 0
 def distance(point1, point2):
     point1_x = point1[0]
     point2_x = point2[0]
@@ -23,11 +25,10 @@ def main():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousepos = pygame.mouse.get_pos()
-                print(mousepos)
                 distance1 = distance(mousepos, (screen.get_width()//4, screen.get_height()//2))
-                print(distance1)
                 if distance1 < screen.get_width()//8:
-                    print(distance1)
+                    pass
+
         screen.fill((255, 255, 255))
 
         pygame.draw.line(screen, (255, 0, 0), (screen.get_width() // 2, 0), (screen.get_width() // 2, screen.get_height()),
@@ -41,6 +42,9 @@ def main():
         pygame.draw.line(screen, (255, 0, 0), (screen.get_width(), 0), (screen.get_width(), screen.get_height()),
                          8)
         pygame.draw.circle(screen, (0, 0, 0), (screen.get_width()/4, screen.get_height()/2), screen.get_width()/8)
+        font2 = pygame.font.SysFont("Arial", 40)
+        caption2 = font2.render("Amount:" + amount, True, (0, 0, 255))
+        screen.blit(caption2, (screen.get_width()//4, screen.get_height()//4))
         pygame.display.update()
 
 
