@@ -1,6 +1,6 @@
 import pygame
 import sys
-import my_character
+
 import random
 import time
 
@@ -10,7 +10,7 @@ def main():
     pygame.init()
 
     # create a screen
-    pygame.display.set_caption("NGU's Project")
+    pygame.display.set_caption("NGU's Project" )
     # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((800, 600))
 
