@@ -46,6 +46,7 @@ def main():
         # TODO: Add your project code
 
         pygame.display.update()
+        pass
 
 
 main()
