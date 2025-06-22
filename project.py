@@ -3,14 +3,43 @@ import sys
 import random
 import time
 import math
+#counselor tier list
+#eathan faust
+#elley adkins
+#michael owens
+#molly townsend
+#michael nelson
+#alex carpenter
+#emre gunay
+#lorelai lovell
+#akshad lahariya
+#anthony hoyt
+#faith zendzian
+#jeffrey white
+#mary kirkpatrick
 
+#1:faith
+#2:jeffrey
+#3:michael owens
+#4:mary
+#5:alex
+#6:molly
+#7:emre
+#8:lorelai
+#9:anthony
+#10:michael nelson
+#11:elley
+#12:eathan (best tower)
+#akshad
 # TODO add buildings and all that code
 # such as where they spawn, name, cost, amount of that building, and production rate p/s of the building
 class Building:
-    def __init__ (self, screen, x, y, ):
+    def __init__ (self, screen, y):
         self.screen = screen
-        self.x = x
         self.y = y
+
+    def draw(self):
+
         pass
 
 def distance(point1, point2):
