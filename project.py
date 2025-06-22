@@ -4,8 +4,14 @@ import random
 import time
 import math
 
-
-
+# TODO add buildings and all that code
+# such as where they spawn, name, cost, amount of that building, and production rate p/s of the building
+class Building:
+    def __init__ (self, screen, x, y, ):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        pass
 
 def distance(point1, point2):
     point1_x = point1[0]
@@ -23,6 +29,7 @@ def main():
     amount = 0
     amount_click = 1
     amount_second = 0
+    secondlooptime = 0
     famount = format(amount, ",")
     clock = pygame.time.Clock()
     prev_time = time.time()
@@ -41,16 +48,15 @@ def main():
         famount = format(amount, ",")
         screen.fill((255, 255, 255))
 
-        pygame.draw.rect(screen, (0, 0, 0), (sw//1.9, sh // 30, sw// 2.2, sh // 7), 0)
-        pygame.draw.rect(screen, (255, 0, 0),(sw // 1.9, sh // 5, sw // 2.2,sh // 7), 0)
+
 
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh),  8)
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh),8)
-        pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh),8)
-        pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8))
+        pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh),8) # BORDERS no touchy
+        pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8)) # placeholder cookie
         font2 = pygame.font.SysFont("calibri", 30)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
         screen.blit(caption2, (sw//40, sh//6))
@@ -58,9 +64,10 @@ def main():
         elapsed_time = current_time - prev_time
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
+        if secondlooptime % 60 == 0:
+            pass # second game loop
 
-        # TODO: FIGURE IT OUT
-
+        secondlooptime += 1
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
 
