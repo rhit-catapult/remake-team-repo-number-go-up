@@ -16,16 +16,6 @@ def distance(point1, point2):
 
 
 
-
-
-def sw(screen,x):
-    return screen.get_width() * (0.01 * x)
-def sh(screen,x):
-    return screen.get_height() * (0.01 * x)
-
-
-
-
 def main():
     pygame.init()
     pygame.display.set_caption("NGU's Project")
@@ -36,6 +26,8 @@ def main():
     famount = format(amount, ",")
     clock = pygame.time.Clock()
     prev_time = time.time()
+    sw = screen.get_width()
+    sh = screen.get_height()
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -43,39 +35,34 @@ def main():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousepos = pygame.mouse.get_pos()
-                distance1 = distance(mousepos, (screen.get_width()//4, screen.get_height()//2))
-                if distance1 < screen.get_width()//8:
+                distance1 = distance(mousepos, (sw//4, sh//2))
+                if distance1 < sw//8:
                     amount += amount_click
         famount = format(amount, ",")
         screen.fill((255, 255, 255))
 
-        pygame.draw.rect(screen, (0, 0, 0), (screen.get_width()//1.9, screen.get_height() // 30, screen.get_width()// 2.2, screen.get_height() // 7), 0)
-        pygame.draw.rect(screen, (255, 0, 0),(screen.get_width() // 1.9, screen.get_height() // 5, screen.get_width() // 2.2,screen.get_height() // 7), 0)
+        pygame.draw.rect(screen, (0, 0, 0), (sw//1.9, sh // 30, sw// 2.2, sh // 7), 0)
+        pygame.draw.rect(screen, (255, 0, 0),(sw // 1.9, sh // 5, sw // 2.2,sh // 7), 0)
 
-        pygame.draw.line(screen, (0, 0, 0), (screen.get_width() // 2, 0), (screen.get_width() // 2, screen.get_height()),
-                         10)
-        pygame.draw.line(screen, (0, 0, 0), (0, 0), (screen.get_width(), 0),
-                         8)
-        pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, screen.get_height()),
-                         8)
-        pygame.draw.line(screen, (0, 0, 0), (0, screen.get_height()), (screen.get_width(), screen.get_height()),
-                         8)
-        pygame.draw.line(screen, (0, 0, 0), (screen.get_width(), 0), (screen.get_width(), screen.get_height()),
-                         8)
-        pygame.draw.circle(screen, (0, 0, 0), (sw(screen,25), sh(screen,50)), sw(screen,12.5) )
+        pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
+        pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh),  8)
+        pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh),8)
+        pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh),8)
+        pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8))
         font2 = pygame.font.SysFont("calibri", 30)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
-        screen.blit(caption2, (screen.get_width()//40, screen.get_height()//6))
-        pygame.display.update()
-
+        screen.blit(caption2, (sw//40, sh//6))
         current_time = time.time()
         elapsed_time = current_time - prev_time
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
 
-
+        # TODO: FIGURE IT OUT
 
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
+        pygame.display.update()
 
 
 main()
