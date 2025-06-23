@@ -3,20 +3,6 @@ import sys
 import random
 import time
 import math
-#counselor tier list
-#eathan faust
-#elley adkins
-#michael owens
-#molly townsend
-#michael nelson
-#alex carpenter
-#emre gunay
-#lorelai lovell
-#akshad lahariya
-#anthony hoyt
-#faith zendzian
-#jeffrey white
-#mary kirkpatrick
 
 #1:faith
 #2:jeffrey
@@ -30,9 +16,9 @@ import math
 #10:michael nelson
 #11:elley
 #12:eathan (best tower)
-#akshad
+#akshad is the cookie
 # TODO add buildings and all that code
-# such as where they spawn, name, cost, amount of that building, and production rate p/s of the building
+# such as where they spawn, an image of the counselor, name, cost, amount of that building, and production rate p/s of the building
 class Building:
     def __init__ (self, screen, y):
         self.screen = screen
@@ -40,6 +26,8 @@ class Building:
 
     def draw(self):
 
+        pass
+    def create(self):
         pass
 
 def distance(point1, point2):
@@ -56,10 +44,14 @@ def main():
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
     amount = 0
+
     amount_click = 1
-    amount_second = 0
+    amountpersecond = 1456
     secondlooptime = 0
+
     famount = format(amount, ",")
+    famountpersecond = format(amountpersecond, ",")
+
     clock = pygame.time.Clock()
     prev_time = time.time()
     sw = screen.get_width()
@@ -75,10 +67,11 @@ def main():
                 if distance1 < sw//8:
                     amount += amount_click
         famount = format(amount, ",")
+        famountpersecond = format(amountpersecond, ",")
         screen.fill((255, 255, 255))
 
 
-
+        pygame.draw.rect(screen, (0, 255, 0), (sw//2, 0, sw//2, sh//6))
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
@@ -86,17 +79,31 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh),8)
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh),8) # BORDERS no touchy
         pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8)) # placeholder cookie
-        font2 = pygame.font.SysFont("calibri", 30)
-        caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
-        screen.blit(caption2, (sw//40, sh//6))
         current_time = time.time()
         elapsed_time = current_time - prev_time
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
         if secondlooptime % 60 == 0:
+
             pass # second game loop
 
+        amount = amount + amountpersecond/60
+        amount //= 1
+
+        print(amountpersecond)
+        print(famountpersecond)
+
         secondlooptime += 1
+
+        font2 = pygame.font.SysFont("calibri", 30)
+        caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
+        screen.blit(caption2, (sw // 40, sh // 6))
+        font3 = pygame.font.SysFont("calibri", 20)
+        caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
+        screen.blit(caption3, (sw // 40, sh // 4))
+        amountpersecond *= 1.5
+
+
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
 
