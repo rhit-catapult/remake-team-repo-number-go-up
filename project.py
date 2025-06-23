@@ -53,7 +53,7 @@ def main():
     sw = screen.get_width()
     sh = screen.get_height()
     while True:
-        clock.tick(10)
+        clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -85,9 +85,6 @@ def main():
 
         amount = amount + amountpersecond/60
         amount //= 1
-
-        print(amountpersecond)
-        print(famountpersecond)
 
         secondlooptime += 1
 
