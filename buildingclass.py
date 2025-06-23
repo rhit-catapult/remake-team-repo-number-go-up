@@ -6,9 +6,9 @@ cost1 = 0
 building_aps = 0
 building_amount = 0
 
-counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "michael nelson",
+counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "anthony", "michael nelson",
                    "elley", "eathan"]
-costs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+costs = [1, 5, 25, 125, 625, 3125, 15625, 78125, 390625, 1953125, 12345667, 100000000000000]
 building_aps = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 10000000000000]
 a1 = 0
 a2 = 0
@@ -38,8 +38,9 @@ class Building:
         cost1 = costs[inputbuilding]
         building_aps1 = building_aps[inputbuilding]
 
-        amount = amount - cost1
-        amountpersecond = amountpersecond + building_aps1
-        building_amount = building_amount + 1
-        cost1 = cost1 * 1.5
+        if amount >= cost1:
+            amount = amount - cost1
+            amountpersecond = amountpersecond + building_aps1
+            building_amount = building_amount + 1
+            cost1 = cost1 * 1.2
         return (amount, amountpersecond)

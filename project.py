@@ -65,16 +65,15 @@ def main():
                     if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
                         print(i)
                         inputbuilding = i
-                        #test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
                         amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
-                    scroll_dis += 5
+                    scroll_dis += sh//24
                 if event.y < 0:
-                    scroll_dis -= 5
+                    scroll_dis -= sh//24
         if scroll_dis > 0:
             scroll_dis = 0
         if scroll_dis < -1 * sh:
