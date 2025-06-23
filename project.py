@@ -37,15 +37,11 @@ def main():
     pygame.init()
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
-    counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "michael nelson",
-                   "elley", "eathan"]
-    costs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    building_aps = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 10000000000000]
-    building_amts = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12]
+    scroll_dis = 0
     progression = 0
     amount = 0
     amount_click = 1
-    amountpersecond = 0
+    amountpersecond = 4
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
@@ -63,12 +59,22 @@ def main():
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click
+            if event.type == pygame.MOUSEWHEEL:
+                if event.y > 0:
+                    scroll_dis += 5
+                if event.y < 0:
+                    scroll_dis -= 5
         famount = format(amount, ",")
         famountpersecond = format(amountpersecond, ",")
         screen.fill((255, 255, 255))
 
 
-        pygame.draw.rect(screen, (0, 255, 0), (sw//2, 0, sw//2, sh//6))
+        pygame.draw.rect(screen, (0, 0, 255), (sw//2, 0, sw//2, sh//6))
+        pygame.draw.rect(screen, (0, 0, 220), (sw // 2, sh // 6, sw // 2, sh // 6))
+        pygame.draw.rect(screen, (0, 0, 185), (sw // 2, sh // 6*2, sw // 2, sh // 6))
+        pygame.draw.rect(screen, (0, 0, 150), (sw // 2, sh // 6*3, sw // 2, sh // 6))
+        pygame.draw.rect(screen, (0, 0, 115), (sw // 2, sh // 6*4, sw // 2, sh // 6))
+        pygame.draw.rect(screen, (0, 0, 80), (sw // 2, sh // 6 * 5, sw // 2, sh // 6))
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
@@ -81,12 +87,12 @@ def main():
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
         if secondlooptime % 60 == 0:
-            print(counselors[0])
+            amount = amount + amountpersecond
             pass # second game loop
 
-        amount = amount + amountpersecond/60
-        amount //= 1
 
+
+        amount //= 1
         secondlooptime += 1
 
 
