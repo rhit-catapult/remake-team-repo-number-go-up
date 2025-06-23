@@ -49,6 +49,7 @@ def main():
     prev_time = time.time()
     sw = screen.get_width()
     sh = screen.get_height()
+    rectlist = []
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -56,6 +57,10 @@ def main():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousepos = pygame.mouse.get_pos()
+                for i in range(len(rectlist)):
+                    rect = rectlist[i]
+                    if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
+                        print(i)
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click
@@ -72,19 +77,23 @@ def main():
         famountpersecond = format(amountpersecond, ",")
         screen.fill((255, 255, 255))
 
+        rectlist = [
+            pygame.draw.rect(screen, (200, 200, 255), (sw//2, 0+scroll_dis, sw//2, sh//6)),
+            pygame.draw.rect(screen, (150, 150, 255), (sw // 2, sh // 6+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (100, 100, 255), (sw // 2, sh // 6*2+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (50, 50, 255), (sw // 2, sh // 6*3+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 255), (sw // 2, sh // 6*4+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 220), (sw // 2, sh // 6 * 5+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 185), (sw // 2, sh // 6 * 6 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 150), (sw // 2, sh // 6 * 7 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 115), (sw // 2, sh // 6 * 8 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 80), (sw // 2, sh // 6 * 9 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 45), (sw // 2, sh // 6 * 10 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (0, 0, 10), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
+        ]
 
-        pygame.draw.rect(screen, (200, 200, 255), (sw//2, 0+scroll_dis, sw//2, sh//6))
-        pygame.draw.rect(screen, (150, 150, 255), (sw // 2, sh // 6+scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (100, 100, 255), (sw // 2, sh // 6*2+scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (50, 50, 255), (sw // 2, sh // 6*3+scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 255), (sw // 2, sh // 6*4+scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 220), (sw // 2, sh // 6 * 5+scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 185), (sw // 2, sh // 6 * 6 + scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 150), (sw // 2, sh // 6 * 7 + scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 115), (sw // 2, sh // 6 * 8 + scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 80), (sw // 2, sh // 6 * 9 + scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 45), (sw // 2, sh // 6 * 10 + scroll_dis, sw // 2, sh // 6))
-        pygame.draw.rect(screen, (0, 0, 10), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
+
+
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
