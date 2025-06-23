@@ -3,6 +3,7 @@ import sys
 import time
 import math
 import random
+from buildingclass import Building
 
 #1:faith
 #2:jeffrey
@@ -19,15 +20,9 @@ import random
 #akshad is the cookie
 
 # TODO add buildings and all that code
-# such as where they spawn, an image of the counselor, name, cost, amount of that building, and production rate p/s of the building
-class Building:
-    def __init__ (self, screen, y):
-        self.screen = screen
-        self.y = y
-    def draw(self):
-        pass
-    def create(self):
-        pass
+# such as where they spawn, an image of the counselor, name, cost,
+# amount of that building, and production rate p/s of the building
+
 
 def distance(point1, point2):
     point1_x = point1[0]
@@ -42,6 +37,10 @@ def main():
     pygame.init()
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
+    counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "michael nelson",
+                   "elley", "eathan"]
+    costs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    building_aps = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 10000000000000]
     amount = 0
     amount_click = 1
     amountpersecond = 0
@@ -80,13 +79,15 @@ def main():
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
         if secondlooptime % 60 == 0:
-
+            print(counselors[0])
             pass # second game loop
 
         amount = amount + amountpersecond/60
         amount //= 1
 
         secondlooptime += 1
+
+
 
         font2 = pygame.font.SysFont("calibri", 30)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
