@@ -1,8 +1,8 @@
 import pygame
 import sys
-import random
 import time
 import math
+import random
 
 #1:faith
 #2:jeffrey
@@ -17,15 +17,14 @@ import math
 #11:elley
 #12:eathan (best tower)
 #akshad is the cookie
+
 # TODO add buildings and all that code
 # such as where they spawn, an image of the counselor, name, cost, amount of that building, and production rate p/s of the building
 class Building:
     def __init__ (self, screen, y):
         self.screen = screen
         self.y = y
-
     def draw(self):
-
         pass
     def create(self):
         pass
@@ -44,20 +43,17 @@ def main():
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
     amount = 0
-
     amount_click = 1
-    amountpersecond = 1456
+    amountpersecond = 0
     secondlooptime = 0
-
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
-
     clock = pygame.time.Clock()
     prev_time = time.time()
     sw = screen.get_width()
     sh = screen.get_height()
     while True:
-        clock.tick(60)
+        clock.tick(10)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -101,7 +97,7 @@ def main():
         font3 = pygame.font.SysFont("calibri", 20)
         caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
         screen.blit(caption3, (sw // 40, sh // 4))
-        amountpersecond *= 1.5
+
 
 
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
