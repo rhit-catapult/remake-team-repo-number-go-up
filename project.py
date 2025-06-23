@@ -3,7 +3,8 @@ import sys
 import time
 import math
 import random
-from buildingclass import Building
+from buildingclass import Building, building_aps, building_amount, cost1
+
 
 #1:faith
 #2:jeffrey
@@ -49,6 +50,8 @@ def main():
     prev_time = time.time()
     sw = screen.get_width()
     sh = screen.get_height()
+    inputbuilding = 0
+    test = Building(screen)
     rectlist = []
     while True:
         clock.tick(60)
@@ -61,6 +64,9 @@ def main():
                     rect = rectlist[i]
                     if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
                         print(i)
+                        inputbuilding = i
+                        #test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
+                        amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click

@@ -1,6 +1,11 @@
 import pygame
 import sys
 
+counselor = ""
+cost1 = 0
+building_aps = 0
+building_amount = 0
+
 counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "michael nelson",
                    "elley", "eathan"]
 costs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -20,14 +25,21 @@ a12 = 0
 # building_amts = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12]
 progression = 0
 class Building:
-    def __init__(self, screen, y):
+    def __init__(self, screen):
         self.screen = screen
-        self.y = y
+        #self.y = y
 
     def draw(self, screen):
         pygame.draw.rect(self.screen, (0, 255, 0), (screen.get_width()//2, 0))
     def update(self):
         pass
-    def cost(self):
-        pass
+    def cost(self, inputbuilding, building_aps, building_amount, amount, amountpersecond):
+        self.inputbuilding = inputbuilding
+        cost1 = costs[inputbuilding]
+        building_aps1 = building_aps[inputbuilding]
 
+        amount = amount - cost1
+        amountpersecond = amountpersecond + building_aps1
+        building_amount = building_amount + 1
+        cost1 = cost1 * 1.5
+        return (amount, amountpersecond)
