@@ -66,7 +66,6 @@ def main():
                 for i in range(len(rectlist)):
                     rect = rectlist[i]
                     if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
-                        print(i)
                         inputbuilding = i
                         amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amts, amount, amountpersecond)
 
@@ -127,7 +126,7 @@ def main():
 
         ]
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
-        pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
+        # pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh),  8)
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh),8)
@@ -154,14 +153,14 @@ def main():
             screen.blit(caption1, (sw//2 + sw//6, sh // 60 + (i * sh//6) + scroll_dis))
             captioncost = font2.render("Cost: "+ str(costs[i]), True, (255, 255, 255))
             screen.blit(captioncost, (sw//2 + sw//6, sh // 60 + (i * sh//6) + sh//20 + scroll_dis))
-            captionoftheaps = font2.render("Aps: " + str(building_aps[i]), True, (255, 255, 255))
+            captionoftheaps = font2.render("APS: " + str(building_aps[i]), True, (255, 255, 255))
             screen.blit(captionoftheaps, (sw // 2 + sw // 6, sh // 60 + (i * sh // 6) + sh // 20*2 + scroll_dis))
             captionamt = font2.render(str(building_amts[i]), True, (255, 255, 255))
             screen.blit(captionamt, (sw // 2 + sw // 5*2, sh // 60 + (i * sh // 6) + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
-        caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
+        caption3 = font3.render("APS: " + str(famountpersecond), True, (0, 0, 255))
         screen.blit(caption3, (sw // 40, sh // 5+sh//40))
 
 
