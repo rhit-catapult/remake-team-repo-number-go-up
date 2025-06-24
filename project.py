@@ -3,7 +3,7 @@ import sys
 import time
 import math
 import random
-from buildingclass import Building, counselors, building_aps, building_amts, cost1
+from buildingclass import Building, counselors, building_aps, building_amts, cost1, costs
 
 
 #1:faith
@@ -129,7 +129,9 @@ def main():
 
         for i in range(12):
             caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
-            screen.blit(caption1, (sw//2 + sw//50, 0 + sh // 50 + (i * 100) + scroll_dis))
+            screen.blit(caption1, (sw//2 + sw//6, 0 + sh // 50 + (i * sh//6) + scroll_dis))
+            captioncost = font2.render(str(costs[i]), True, (255, 255, 255))
+            screen.blit(captioncost, (sw//2 + sw//6, 0 + sh // 50 + (i * sh//6) + 35 + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
