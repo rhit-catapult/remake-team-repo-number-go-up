@@ -40,6 +40,7 @@ def main():
     screen = pygame.display.set_mode((800, 600))
     scroll_dis = 0
     progression = 0
+    GREY = (130, 130, 130)
     amount = 0
     amount_click = 1
     amountpersecond = 0
@@ -53,6 +54,7 @@ def main():
     inputbuilding = 0
     test = Building(screen)
     rectlist = []
+    linelist = []
     shop2list = [] #upgrades
     while True:
         clock.tick(60)
@@ -85,20 +87,45 @@ def main():
         screen.fill((255, 255, 255))
 
         rectlist = [
-            pygame.draw.rect(screen, (200, 200, 255), (sw//2, 0+scroll_dis, sw//2, sh//6)),
-            pygame.draw.rect(screen, (150, 150, 255), (sw // 2, sh // 6+scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (100, 100, 255), (sw // 2, sh // 6*2+scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (50, 50, 255), (sw // 2, sh // 6*3+scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 255), (sw // 2, sh // 6*4+scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 220), (sw // 2, sh // 6 * 5+scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 185), (sw // 2, sh // 6 * 6 + scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 150), (sw // 2, sh // 6 * 7 + scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 115), (sw // 2, sh // 6 * 8 + scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 80), (sw // 2, sh // 6 * 9 + scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 45), (sw // 2, sh // 6 * 10 + scroll_dis, sw // 2, sh // 6)),
-            pygame.draw.rect(screen, (0, 0, 10), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
+            pygame.draw.rect(screen, (GREY), (sw//2, 0+scroll_dis, sw//2, sh//6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6*2+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6*3+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6*4+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 5+scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 6 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 7 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 8 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 9 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 10 + scroll_dis, sw // 2, sh // 6)),
+            pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
         ]
+        linelist = [
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 + scroll_dis), (sw, sh // 6 + scroll_dis), 8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 2 + scroll_dis), (sw, sh // 6 * 2 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 3 + scroll_dis), (sw, sh // 6 * 3 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 4 + scroll_dis), (sw, sh // 6 * 4 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 5 + scroll_dis), (sw, sh // 6 * 5 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 6 + scroll_dis), (sw, sh // 6 * 6 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 7 + scroll_dis), (sw, sh // 6 * 7 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 8 + scroll_dis), (sw, sh // 6 * 8 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 9 + scroll_dis), (sw, sh // 6 * 9 + scroll_dis),
+                             8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 10 + scroll_dis),
+                             (sw, sh // 6 * 10 + scroll_dis), 8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 11 + scroll_dis),
+                             (sw, sh // 6 * 11 + scroll_dis), 8),
+            pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 12 + scroll_dis),
+                             (sw, sh // 6 * 12 + scroll_dis), 8)
 
+        ]
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
