@@ -66,6 +66,7 @@ def main():
                         print(i)
                         inputbuilding = i
                         amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
+
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click

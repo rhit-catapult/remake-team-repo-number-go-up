@@ -37,10 +37,12 @@ class Building:
         self.inputbuilding = inputbuilding
         cost1 = costs[inputbuilding]
         building_aps1 = building_aps[inputbuilding]
-
+        
         if amount >= cost1:
             amount = amount - cost1
+
             amountpersecond = amountpersecond + building_aps1
             building_amount = building_amount + 1
-            cost1 = cost1 * 1.2
+            costs[inputbuilding] *= 1.2
+
         return (amount, amountpersecond)
