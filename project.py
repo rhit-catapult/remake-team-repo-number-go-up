@@ -53,7 +53,6 @@ def main():
     inputbuilding = 0
     test = Building(screen)
     rectlist = []
-    shop1list = [] #buildings
     shop2list = [] #upgrades
     while True:
         clock.tick(60)
@@ -100,9 +99,6 @@ def main():
             pygame.draw.rect(screen, (0, 0, 10), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
         ]
 
-
-
-
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
@@ -119,31 +115,35 @@ def main():
 
             pass # second game loop
 
-
-
         amount //= 1
         secondlooptime += 1
         font2 = pygame.font.SysFont("calibri", sh // 22)
+        amont = pygame.font.SysFont("calibri", sh // 15)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
 
         for i in range(12):
             caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
-            screen.blit(caption1, (sw//2 + sw//6, 0 + sh // 50 + (i * sh//6) + scroll_dis))
-            captioncost = font2.render(str(costs[i]), True, (255, 255, 255))
-            screen.blit(captioncost, (sw//2 + sw//6, 0 + sh // 50 + (i * sh//6) + 35 + scroll_dis))
+            screen.blit(caption1, (sw//2 + sw//6, sh // 60 + (i * sh//6) + scroll_dis))
+            captioncost = font2.render("Cost: "+ str(costs[i]), True, (255, 255, 255))
+            screen.blit(captioncost, (sw//2 + sw//6, sh // 60 + (i * sh//6) + sh//20 + scroll_dis))
+            captionoftheaps = font2.render("Aps: " + str(building_aps[i]), True, (255, 255, 255))
+            screen.blit(captionoftheaps, (sw // 2 + sw // 6, sh // 60 + (i * sh // 6) + sh // 20*2 + scroll_dis))
+            captionamt = font2.render(str(building_amts[i]), True, (255, 255, 255))
+            screen.blit(captionamt, (sw // 2 + sw // 5*2, sh // 60 + (i * sh // 6) + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
         caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
         screen.blit(caption3, (sw // 40, sh // 5+sh//40))
 
-        shop1list = [
-            #screen.blit(caption1, (sw // 2 + sw // 6, 0 + sh // 50 + scroll_dis))
 
-        ]
-        for i in range(len(shop1list)):
-            pass
+        pygame.draw.line(screen, (0, 0, 0), (sw // 2, 0), (sw // 2, sh), 10)
+        pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh // 1.25), 10)
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
+        pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh), 8)
+        pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh), 8)
+        pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh), 8)  # BORDERS no touchy
 
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
