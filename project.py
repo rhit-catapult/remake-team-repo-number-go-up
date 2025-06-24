@@ -3,7 +3,7 @@ import sys
 import time
 import math
 import random
-from buildingclass import Building, building_aps, building_amount, cost1
+from buildingclass import Building, counselors, building_aps, building_amts, cost1
 
 
 #1:faith
@@ -53,6 +53,8 @@ def main():
     inputbuilding = 0
     test = Building(screen)
     rectlist = []
+    shop1list = [] #buildings
+    shop2list = [] #upgrades
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -65,7 +67,7 @@ def main():
                     if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
                         print(i)
                         inputbuilding = i
-                        amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amount, amount, amountpersecond)
+                        amount, amountpersecond = test.cost(inputbuilding, building_aps, building_amts, amount, amountpersecond)
 
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
@@ -100,6 +102,7 @@ def main():
 
 
 
+
         pygame.draw.line(screen, (0, 0, 0), (sw//2,0), (sw//2,sh),     10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh//1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
@@ -113,23 +116,28 @@ def main():
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
         if secondlooptime % 60 == 0:
             amount = amount + amountpersecond
+
             pass # second game loop
 
 
 
         amount //= 1
         secondlooptime += 1
-
-
-
-        font2 = pygame.font.SysFont("calibri", 30)
+        font2 = pygame.font.SysFont("calibri", sh // 22)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
+        caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
+
         screen.blit(caption2, (sw // 40, sh // 6))
-        font3 = pygame.font.SysFont("calibri", 20)
+        font3 = pygame.font.SysFont("calibri", sh//32)
         caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
-        screen.blit(caption3, (sw // 40, sh // 4))
+        screen.blit(caption3, (sw // 40, sh // 5+sh//40))
 
+        shop1list = [
+            screen.blit(caption1, (sw // 2 + sw // 6, 0 + sh // 50 + scroll_dis))
 
+        ]
+        for i in range(len(shop1list)):
+            pass
 
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()

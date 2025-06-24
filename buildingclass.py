@@ -1,29 +1,17 @@
 import pygame
 import sys
 
-counselor = ""
+
 cost1 = 0
 building_aps = 0
-building_amount = 0
+
 
 counselors = ["faith", "jeffrey", "michael owens", "mary", "alex", "molly", "emre", "lorelai", "anthony", "michael nelson",
                    "elley", "eathan"]
 costs = [10, 75, 300, 1250, 3250, 15000, 80000, 390000, 1500000, 30000000, 10000000000]
 building_aps = [1, 5, 35, 160, 400, 1000, 5000, 22500, 125000, 1000000, 50000000, 1000000000000000000]
-a1 = 0
-a2 = 0
-a3 = 0
-a4 = 0
-a5 = 0
-a6 = 0
-a7 = 0
-a8 = 0
-a9 = 0
-a10 = 0
-a11 = 0
-a12 = 0
-# building_amts = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12]
-progression = 0
+building_amts = [0,0,0,0,0,0,0,0,0,0,0,0]
+
 class Building:
     def __init__(self, screen):
         self.screen = screen
@@ -37,12 +25,12 @@ class Building:
         self.inputbuilding = inputbuilding
         cost1 = costs[inputbuilding]
         building_aps1 = building_aps[inputbuilding]
-        
+
         if amount >= cost1:
             amount = amount - cost1
-
             amountpersecond = amountpersecond + building_aps1
-            building_amount = building_amount + 1
-            costs[inputbuilding] *= 1.2
+            building_amts[inputbuilding] = building_amts[inputbuilding] + 1
+            costs[inputbuilding] *= 12
+            costs[inputbuilding] //= 10
 
         return (amount, amountpersecond)
