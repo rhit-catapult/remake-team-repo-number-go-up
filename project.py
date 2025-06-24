@@ -42,7 +42,7 @@ def main():
     progression = 0
     amount = 0
     amount_click = 1
-    amountpersecond = 4
+    amountpersecond = 0
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
