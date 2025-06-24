@@ -127,13 +127,17 @@ def main():
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
 
+        for i in range(12):
+            caption1 = font2.render(str(counselors[i]), True, (0, 0, 255))
+            screen.blit(caption1, (sw//2 + sw//6, 0 + sh // 50 + (i * 20) + scroll_dis))
+
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
         caption3 = font3.render("Aps: " + str(famountpersecond), True, (0, 0, 255))
         screen.blit(caption3, (sw // 40, sh // 5+sh//40))
 
         shop1list = [
-            screen.blit(caption1, (sw // 2 + sw // 6, 0 + sh // 50 + scroll_dis))
+            #screen.blit(caption1, (sw // 2 + sw // 6, 0 + sh // 50 + scroll_dis))
 
         ]
         for i in range(len(shop1list)):
