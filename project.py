@@ -128,8 +128,8 @@ def main():
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
 
         for i in range(12):
-            caption1 = font2.render(str(counselors[i]), True, (0, 0, 255))
-            screen.blit(caption1, (sw//2 + sw//6, 0 + sh // 50 + (i * 20) + scroll_dis))
+            caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
+            screen.blit(caption1, (sw//2 + sw//50, 0 + sh // 50 + (i * 100) + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
