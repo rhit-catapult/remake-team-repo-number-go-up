@@ -36,7 +36,7 @@ def main():
     image10 = pygame.image.load("./samples/nelson.JPEG")
     image11 = pygame.image.load("./samples/elley.JPEG")
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
-    image13 = pygame.image.load("./samples/akshad.JPEG")
+    image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
     amount = 0
     amount_click = 1
@@ -60,7 +60,7 @@ def main():
     image10 = pygame.transform.scale(image10, (sh//6,sh//6))
     image11 = pygame.transform.scale(image11, (sh//6,sh//6))
     image12 = pygame.transform.scale(image12, (sh//6,sh//6))
-    image13 = pygame.transform.scale(image13, (sh//3,sh//3))
+    image13 = pygame.transform.scale(image13, (sh//3,sh//2.5))
     inputbuilding = 0
     test = Building(screen)
     rectlist = []
@@ -121,6 +121,7 @@ def main():
         screen.blit(image10, (sw // 2 + sw // 60, sh // 6 * 9 + scroll_dis))
         screen.blit(image11, (sw // 2 + sw // 60, sh // 6 * 10 + scroll_dis))
         screen.blit(image12, (sw // 2 + sw // 60, sh // 6 * 11 + scroll_dis))
+
         linelist = [
             pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 + scroll_dis), (sw, sh // 6 + scroll_dis), 8),
             pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 2 + scroll_dis), (sw, sh // 6 * 2 + scroll_dis),
@@ -153,16 +154,18 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh),  8)
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh),8)
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh),8) # BORDERS no touchy
-        pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8)) # placeholder cookie
+        # pygame.draw.circle(screen, (0, 0, 0), (sw//4, sh//2), (sw//8)) # placeholder cookie
         current_time = time.time()
         elapsed_time = current_time - prev_time
         prev_time = current_time
         fps = 1 / elapsed_time if elapsed_time > 0 else 0
         if secondlooptime % 60 == 0:
-            amount = amount + amountpersecond
 
+            if amountpersecond < 60:
+                amount += amountpersecond
             pass # second game loop
-
+        if amountpersecond >= 60:
+            amount = amount + amountpersecond//60
         amount //= 1
         secondlooptime += 1
         font2 = pygame.font.SysFont("calibri", sh // 22)
@@ -192,7 +195,7 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (0, sh), 8)
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh), 8)
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh), 8)  # BORDERS no touchy
-
+        screen.blit(image13, (sw // 8.5, sh // 3.5))
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
 
