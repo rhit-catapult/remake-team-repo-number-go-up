@@ -176,11 +176,14 @@ def main():
         for i in range(12):
             caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
             screen.blit(caption1, (sw//2 + sw//6, sh // 60 + (i * sh//6) + scroll_dis))
-            captioncost = font2.render("Cost: "+ str(costs[i]), True, (255, 255, 255))
+            fcost = format(costs[i], ",")
+            fcamppersec = format(building_aps[i], ",")
+            famts = format(building_amts[i], ",")
+            captioncost = font2.render("Cost: "+ str(fcost), True, (255, 255, 255))
             screen.blit(captioncost, (sw//2 + sw//6, sh // 60 + (i * sh//6) + sh//20 + scroll_dis))
-            captionoftheaps = font2.render("APS: " + str(building_aps[i]), True, (255, 255, 255))
+            captionoftheaps = font2.render("APS: " + str(fcamppersec), True, (255, 255, 255))
             screen.blit(captionoftheaps, (sw // 2 + sw // 6, sh // 60 + (i * sh // 6) + sh // 20*2 + scroll_dis))
-            captionamt = font2.render(str(building_amts[i]), True, (255, 255, 255))
+            captionamt = font2.render(str(famts), True, (255, 255, 255))
             screen.blit(captionamt, (sw // 2 + sw // 5*2, sh // 60 + (i * sh // 6) + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
