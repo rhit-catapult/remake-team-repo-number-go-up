@@ -170,7 +170,7 @@ def main():
         secondlooptime += 1
         font2 = pygame.font.SysFont("calibri", sh // 22)
         amont = pygame.font.SysFont("calibri", sh // 15)
-        caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
+        caption2 = font2.render("Campers: " + str(famount), True, (0, 0, 0))
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
         #🍝🍝🍝🍝
         for i in range(12):
@@ -181,14 +181,14 @@ def main():
             famts = format(building_amts[i], ",")
             captioncost = font2.render("Cost: "+ str(fcost), True, (255, 255, 255))
             screen.blit(captioncost, (sw//2 + sw//6, sh // 60 + (i * sh//6) + sh//20 + scroll_dis))
-            captionoftheaps = font2.render("APS: " + str(fcamppersec), True, (255, 255, 255))
+            captionoftheaps = font2.render("CPS: " + str(fcamppersec), True, (255, 255, 255))
             screen.blit(captionoftheaps, (sw // 2 + sw // 6, sh // 60 + (i * sh // 6) + sh // 20*2 + scroll_dis))
             captionamt = font2.render(str(famts), True, (255, 255, 255))
             screen.blit(captionamt, (sw // 2 + sw // 5*2, sh // 60 + (i * sh // 6) + scroll_dis))
 
         screen.blit(caption2, (sw // 40, sh // 6))
         font3 = pygame.font.SysFont("calibri", sh//32)
-        caption3 = font3.render("APS: " + str(famountpersecond), True, (0, 0, 255))
+        caption3 = font3.render("CPS: " + str(famountpersecond), True, (0, 0, 0))
         screen.blit(caption3, (sw // 40, sh // 5+sh//40))
 
 
