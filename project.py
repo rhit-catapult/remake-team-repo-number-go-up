@@ -11,12 +11,14 @@ def distance(point1, point2):
     point1_y = point1[1]
     point2_y = point2[1]
     return math.sqrt((point1_x - point2_x)**2 + (point1_y - point2_y)**2)
-
-def shop(x):
-    shop_cost = []
-    shop_name = []
-    shop_desc = []
-    shop_buff = []
+class shop:
+    def shop(x):
+        shop_cost = []
+        shop_name = []
+        shop_desc = []
+        shop_buff = []
+    def draw(screen):
+        pygame.draw.rect(screen,(200,200,200),(0,480,400,600))
 
 
 def main():
@@ -41,6 +43,7 @@ def main():
     amount = 0
     amount_click = 1
     amountpersecond = 0
+
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
@@ -75,6 +78,7 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousepos = pygame.mouse.get_pos()
+                rect1 = pygame.draw.rect(screen,(200,200,200),(0,480,400,600),)
                 for i in range(len(rectlist)):
                     rect = rectlist[i]
                     if rect.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
@@ -84,11 +88,23 @@ def main():
                 distance1 = distance(mousepos, (sw//4, sh//2))
                 if distance1 < sw//8:
                     amount += amount_click
+
+                if rect1.collidepoint(pygame.mouse.get_pos()):
+                    print('yea')
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
                     scroll_dis += sh//24
                 if event.y < 0:
                     scroll_dis -= sh//24
+
+
+
+
+
+            pass
+
+
+
         if scroll_dis > 0:
             scroll_dis = 0
         if scroll_dis < -1 * sh:
@@ -197,6 +213,8 @@ def main():
         caption30 = font3.render("CPS:", True, (0, 0, 0))
         screen.blit(caption30, (sw // 4.33, sh // 6+sh//32))
         screen.blit(caption3, (sw // 4.036 - len(famountpersecond) * 5, sh // 5+sh//40))
+
+        shop.draw(screen)
 
         pygame.draw.line(screen, (0, 0, 0), (sw // 2, 0), (sw // 2, sh), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh // 1.25), 10)
