@@ -38,7 +38,7 @@ def main():
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
     image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
-    amount = 0
+    amount = 100000000000000
     amount_click = 1
     amountpersecond = 0
     secondlooptime = 0
@@ -70,7 +70,9 @@ def main():
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+
                 sys.exit()
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mousepos = pygame.mouse.get_pos()
                 for i in range(len(rectlist)):
@@ -170,7 +172,7 @@ def main():
         secondlooptime += 1
         font2 = pygame.font.SysFont("calibri", sh // 22)
         amont = pygame.font.SysFont("calibri", sh // 15)
-        caption2 = font2.render("Campers: " + str(famount), True, (0, 0, 0))
+        caption2 = font2.render(  str(famount), True, (0, 0, 0))
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
         #🍝🍝🍝🍝
         for i in range(12):
@@ -186,7 +188,8 @@ def main():
             captionamt = font2.render(str(famts), True, (255, 255, 255))
             screen.blit(captionamt, (sw // 2 + sw // 5*2, sh // 60 + (i * sh // 6) + scroll_dis))
 
-        screen.blit(caption2, (sw // 40, sh // 6))
+        screen.blit(caption2, (sw // 4.5  - len(famount)*5, sh // 7))
+
         font3 = pygame.font.SysFont("calibri", sh//32)
         caption3 = font3.render("CPS: " + str(famountpersecond), True, (0, 0, 0))
         screen.blit(caption3, (sw // 40, sh // 5+sh//40))
