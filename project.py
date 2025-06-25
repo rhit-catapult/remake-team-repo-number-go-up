@@ -147,7 +147,7 @@ def main():
         amont = pygame.font.SysFont("calibri", sh // 15)
         caption2 = font2.render("Amount: " + str(famount), True, (0, 0, 255))
         caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
-
+        #🍝🍝🍝🍝
         for i in range(12):
             caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
             screen.blit(caption1, (sw//2 + sw//6, sh // 60 + (i * sh//6) + scroll_dis))
