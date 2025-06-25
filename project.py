@@ -32,6 +32,11 @@ def distance(point1, point2):
     point2_y = point2[1]
     return math.sqrt((point1_x - point2_x)**2 + (point1_y - point2_y)**2)
 
+def shop(x):
+    shop_cost = []
+    shop_name = []
+    shop_desc = []
+    shop_buff = []
 
 
 def main():
