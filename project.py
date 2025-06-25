@@ -5,26 +5,6 @@ import math
 import random
 from buildingclass import Building, counselors, building_aps, building_amts, cost1, costs
 
-
-#1:faith
-#2:jeffrey
-#3:michael owens
-#4:mary
-#5:alex
-#6:molly
-#7:emre
-#8:lorelai
-#9:anthony
-#10:michael nelson
-#11:elley
-#12:eathan (best tower)
-#akshad is the cookie
-
-# TODO add buildings and all that code
-# such as where they spawn, an image of the counselor, name, cost,
-# amount of that building, and production rate p/s of the building
-
-
 def distance(point1, point2):
     point1_x = point1[0]
     point2_x = point2[0]
@@ -44,7 +24,19 @@ def main():
     pygame.display.set_caption("NGU's Project")
     screen = pygame.display.set_mode((800, 600))
     scroll_dis = 0
-    progression = 0
+    image1 = pygame.image.load("./samples/faith.JPEG")
+    image2 = pygame.image.load("./samples/jeffrey.JPEG")
+    image3 = pygame.image.load("./samples/owens.JPEG")
+    image4 = pygame.image.load("./samples/mary.JPEG")
+    image5 = pygame.image.load("./samples/alex.JPEG")
+    image6 = pygame.image.load("./samples/molly.JPEG")
+    image7 = pygame.image.load("./samples/emre.JPEG")
+    image8 = pygame.image.load("./samples/lorelai.JPEG")
+    image9 = pygame.image.load("./samples/anthony.JPEG")
+    image10 = pygame.image.load("./samples/nelson.JPEG")
+    image11 = pygame.image.load("./samples/elley.JPEG")
+    image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
+    image13 = pygame.image.load("./samples/akshad.JPEG")
     GREY = (130, 130, 130)
     amount = 0
     amount_click = 1
@@ -56,6 +48,19 @@ def main():
     prev_time = time.time()
     sw = screen.get_width()
     sh = screen.get_height()
+    image1 = pygame.transform.scale(image1, (sh//6,sh//6))
+    image2 = pygame.transform.scale(image2, (sh//6,sh//6))
+    image3 = pygame.transform.scale(image3, (sh//6,sh//6))
+    image4 = pygame.transform.scale(image4, (sh//6,sh//6))
+    image5 = pygame.transform.scale(image5, (sh//6,sh//6))
+    image6 = pygame.transform.scale(image6, (sh//6,sh//6))
+    image7 = pygame.transform.scale(image7, (sh//6,sh//6))
+    image8 = pygame.transform.scale(image8, (sh//6,sh//6))
+    image9 = pygame.transform.scale(image9, (sh//6,sh//6))
+    image10 = pygame.transform.scale(image10, (sh//6,sh//6))
+    image11 = pygame.transform.scale(image11, (sh//6,sh//6))
+    image12 = pygame.transform.scale(image12, (sh//6,sh//6))
+    image13 = pygame.transform.scale(image13, (sh//3,sh//3))
     inputbuilding = 0
     test = Building(screen)
     rectlist = []
@@ -104,6 +109,18 @@ def main():
             pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 10 + scroll_dis, sw // 2, sh // 6)),
             pygame.draw.rect(screen, (GREY), (sw // 2, sh // 6 * 11 + scroll_dis, sw // 2, sh // 6))
         ]
+        screen.blit(image1, (sw//2+sw//60, sh//6*0+scroll_dis))
+        screen.blit(image2, (sw // 2 + sw // 60, sh // 6 + scroll_dis))
+        screen.blit(image3, (sw // 2 + sw // 60, sh // 6 * 2 + scroll_dis))
+        screen.blit(image4, (sw // 2 + sw // 60, sh // 6 * 3 + scroll_dis))
+        screen.blit(image5, (sw // 2 + sw // 60, sh // 6 * 4 + scroll_dis))
+        screen.blit(image6, (sw // 2 + sw // 60, sh // 6 * 5 + scroll_dis))
+        screen.blit(image7, (sw // 2 + sw // 60, sh // 6 * 6 + scroll_dis))
+        screen.blit(image8, (sw // 2 + sw // 60, sh // 6 * 7 + scroll_dis))
+        screen.blit(image9, (sw // 2 + sw // 60, sh // 6 * 8 + scroll_dis))
+        screen.blit(image10, (sw // 2 + sw // 60, sh // 6 * 9 + scroll_dis))
+        screen.blit(image11, (sw // 2 + sw // 60, sh // 6 * 10 + scroll_dis))
+        screen.blit(image12, (sw // 2 + sw // 60, sh // 6 * 11 + scroll_dis))
         linelist = [
             pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 + scroll_dis), (sw, sh // 6 + scroll_dis), 8),
             pygame.draw.line(screen, (50, 50, 50), (sw // 2, sh // 6 * 2 + scroll_dis), (sw, sh // 6 * 2 + scroll_dis),
