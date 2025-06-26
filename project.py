@@ -40,7 +40,7 @@ def main():
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
     image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
-    amount = 0
+    amount = 100000000000000000
     amount_click = 1
     amountpersecond = 0
     eathancounter = 0
@@ -65,11 +65,13 @@ def main():
     image12 = pygame.transform.scale(image12, (sh//6,sh//6))
     image13 = pygame.transform.scale(image13, (sh//3,sh//2.5))
     inputbuilding = 0
-    shopcosts = 0
+
+    inputcost = 0
+    shopcosts = [1000, 1000000, 1000000000, 10000000000000]
     test = Building(screen)
     rectlist = []
     linelist = []
-    eathancost = 100000000000000
+
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -90,11 +92,17 @@ def main():
                 if distance1 < sw//8:
                     amount += amount_click
 
-                if rect1.collidepoint(pygame.mouse.get_pos()):
-                    print('yea')
-                    if amount >= shopcosts:
-                        amount -= shopcosts
+                if rect1.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
+
+                    if amount >= shopcosts[inputcost]:
+                        amount -= shopcosts[inputcost]
                         eathancounter += 1
+
+                        if inputcost <= 2:
+                            inputcost += 1
+
+
+
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
                     scroll_dis += sh//24
@@ -178,7 +186,7 @@ def main():
             if amountpersecond < 60:
                 amount += amountpersecond
             pass # second game loop
-        if amountpersecond >= 60:
+        if amountpersecond >= 600000000000000000000000000000:
             amount = amount + amountpersecond//60
         amount //= 1
         secondlooptime += 1
@@ -190,10 +198,10 @@ def main():
 
         #🍝🍝🍝🍝
         caption21 = font2.render("Increase click amount", True, (0, 0, 0))
-        caption22 = font3.render("COST: " + str(shopcosts), True, (0, 0, 0))
+        caption22 = font3.render("COST: " + str(shopcosts[inputcost]), True, (0, 0, 0))
         caption23 = font6.render("BUY", True, (0, 0, 0))
         caption24 = font2.render("Beat the game", True, (0, 0, 0))
-        caption25 = font3.render("COST: " + str(eathancost), True, (0, 0, 0))
+        caption25 = font3.render("COST: " + str(shopcosts[3]), True, (0, 0, 0))
         caption26 = font6.render("BUY", True, (0, 0, 0))
         caption27 = font6.render("YOU WIN!", True, (0, 0, 0))
         for i in range(12):
@@ -211,7 +219,8 @@ def main():
 
         screen.blit(caption2, (sw // 4.08  - len(famount)*5, sh // 7))
         screen.blit(caption20, (sw//5-sw//100, sh//11))
-
+        if inputcost < 3:
+            amount_click = (amountpersecond * 0.05 * (inputcost)) + 1
 
         caption3 = font3.render(str(famountpersecond), True, (0, 0, 0))
         caption30 = font3.render("CPS:", True, (0, 0, 0))
@@ -219,16 +228,17 @@ def main():
         screen.blit(caption3, (sw // 4.036 - len(famountpersecond) * 5, sh // 5+sh//40))
 
         shop.draw(screen)
-        if eathancounter < 5:
+        if eathancounter < 4:
             screen.blit(caption21, (sw//40, sh // 1.2))
             screen.blit(caption22, (sw // 40, sh // 1.13))
             screen.blit(caption23, (sw // 3, sh // 1.2))
-        if eathancounter == 5:
+        if eathancounter == 4:
             screen.blit(caption24, (sw//40, sh//1.2))
             screen.blit(caption25, (sw // 40, sh // 1.13))
             screen.blit(caption26, (sw // 3, sh // 1.2))
-        if eathancounter >= 6:
+        if eathancounter >= 5:
             screen.blit(caption27, (sw//8, sh//1.2))
+            amountpersecond **= 1.1
         pygame.draw.line(screen, (0, 0, 0), (sw // 2, 0), (sw // 2, sh), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh // 1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
@@ -236,6 +246,7 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh), 8)
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh), 8)  # BORDERS no touchy
         screen.blit(image13, (sw // 8.5, sh // 3.5))
+        print(amount_click)
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
 
