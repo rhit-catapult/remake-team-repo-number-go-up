@@ -47,6 +47,7 @@ def main():
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
+
     clock = pygame.time.Clock()
     prev_time = time.time()
     sw = screen.get_width()
@@ -67,8 +68,9 @@ def main():
     inputbuilding = 0
 
     inputcost = 0
-    shopcosts = [1000, 1000000, 1000000000, 10000000000000]
+    shopcosts = [1000, 1000000, 1000000000, 1000000000000000]
     test = Building(screen)
+
     rectlist = []
     linelist = []
 
@@ -93,10 +95,9 @@ def main():
                     amount += amount_click
 
                 if rect1.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
-                    eathancounter += 1
                     if amount >= shopcosts[inputcost]:
                         amount -= shopcosts[inputcost]
-
+                        eathancounter += 1
 
                         if inputcost <= 2:
                             inputcost += 1
@@ -231,14 +232,14 @@ def main():
         if eathancounter < 4:
             screen.blit(caption21, (sw//40, sh // 1.2))
             screen.blit(caption22, (sw // 40, sh // 1.13))
-            screen.blit(caption23, (sw // 3, sh // 1.2))
+            screen.blit(caption23, (sw // 3, sh // 1.13))
         if eathancounter == 4:
             screen.blit(caption24, (sw//40, sh//1.2))
             screen.blit(caption25, (sw // 40, sh // 1.13))
-            screen.blit(caption26, (sw // 3, sh // 1.2))
+            screen.blit(caption26, (sw // 3, sh // 1.13))
         if eathancounter >= 5:
             screen.blit(caption27, (sw//8, sh//1.2))
-            amountpersecond **= 1.1
+            amountpersecond *= 2
         pygame.draw.line(screen, (0, 0, 0), (sw // 2, 0), (sw // 2, sh), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh // 1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
