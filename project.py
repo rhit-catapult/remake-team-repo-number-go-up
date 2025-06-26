@@ -40,7 +40,7 @@ def main():
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
     image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
-    amount = 100000000000000000
+    amount = 0
     amount_click = 1
     amountpersecond = 0
     eathancounter = 0
@@ -186,7 +186,7 @@ def main():
             if amountpersecond < 60:
                 amount += amountpersecond
             pass # second game loop
-        if amountpersecond >= 600000000000000000000000000000:
+        if amountpersecond >= 60:
             amount = amount + amountpersecond//60
         amount //= 1
         secondlooptime += 1
@@ -246,7 +246,7 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (0, sh), (sw, sh), 8)
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh), 8)  # BORDERS no touchy
         screen.blit(image13, (sw // 8.5, sh // 3.5))
-        print(amount_click)
+       
         pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
         pygame.display.update()
 
