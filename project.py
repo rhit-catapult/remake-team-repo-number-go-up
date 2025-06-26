@@ -40,7 +40,7 @@ def main():
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
     image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
-    amount = 1000000000000000
+    amount = 0
     amount_click = 1
     amountpersecond = 0
     eathancounter = 1
