@@ -40,10 +40,10 @@ def main():
     image12 = pygame.image.load("./samples/eathan.JPEG")  # the boat (best of all time!!!!!!!!!!!!!!!0
     image13 = pygame.image.load("./samples/akshadcropped.png")
     GREY = (130, 130, 130)
-    amount = 0
+    amount = 1000000000000000
     amount_click = 1
     amountpersecond = 0
-    eathancounter = 0
+    eathancounter = 1
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
@@ -93,10 +93,10 @@ def main():
                     amount += amount_click
 
                 if rect1.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed()[0]:
-
+                    eathancounter += 1
                     if amount >= shopcosts[inputcost]:
                         amount -= shopcosts[inputcost]
-                        eathancounter += 1
+
 
                         if inputcost <= 2:
                             inputcost += 1
