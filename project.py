@@ -92,20 +92,14 @@ def main():
 
                 if rect1.collidepoint(pygame.mouse.get_pos()):
                     print('yea')
-                    eathancounter += 1
+                    if amount >= shopcosts:
+                        amount -= shopcosts
+                        eathancounter += 1
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
                     scroll_dis += sh//24
                 if event.y < 0:
                     scroll_dis -= sh//24
-
-
-
-
-
-            pass
-
-
 
         if scroll_dis > 0:
             scroll_dis = 0
