@@ -68,7 +68,7 @@ def main():
     inputbuilding = 0
 
     inputcost = 0
-    shopcosts = [1000, 1000000, 1000000000, 1000000000000000]
+    shopcosts = [1000, 1000000, 1000000000, 10000000000000000]
     test = Building(screen)
 
     rectlist = []
