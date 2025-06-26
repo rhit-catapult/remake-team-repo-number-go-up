@@ -43,7 +43,7 @@ def main():
     amount = 0
     amount_click = 1
     amountpersecond = 0
-
+    eathancounter = 0
     secondlooptime = 0
     famount = format(amount, ",")
     famountpersecond = format(amountpersecond, ",")
@@ -65,10 +65,11 @@ def main():
     image12 = pygame.transform.scale(image12, (sh//6,sh//6))
     image13 = pygame.transform.scale(image13, (sh//3,sh//2.5))
     inputbuilding = 0
+    shopcosts = 0
     test = Building(screen)
     rectlist = []
     linelist = []
-    shop2list = [] #upgrades
+    eathancost = 100000000000000
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -91,6 +92,7 @@ def main():
 
                 if rect1.collidepoint(pygame.mouse.get_pos()):
                     print('yea')
+                    eathancounter += 1
             if event.type == pygame.MOUSEWHEEL:
                 if event.y > 0:
                     scroll_dis += sh//24
@@ -186,12 +188,20 @@ def main():
             amount = amount + amountpersecond//60
         amount //= 1
         secondlooptime += 1
+        font3 = pygame.font.SysFont("calibri", sh // 32)
+        font6 = pygame.font.SysFont("calibri", sh // 12)
         font2 = pygame.font.SysFont("calibri", sh // 22)
-        amont = pygame.font.SysFont("calibri", sh // 15)
         caption2 = font2.render(  str(famount), True, (0, 0, 0))
         caption20 = font2.render("Campers:", True, (0, 0, 0))
-        caption1 = font2.render(str(counselors[0]), True, (0, 0, 255))
+
         #🍝🍝🍝🍝
+        caption21 = font2.render("Increase click amount", True, (0, 0, 0))
+        caption22 = font3.render("COST: " + str(shopcosts), True, (0, 0, 0))
+        caption23 = font6.render("BUY", True, (0, 0, 0))
+        caption24 = font2.render("Beat the game", True, (0, 0, 0))
+        caption25 = font3.render("COST: " + str(eathancost), True, (0, 0, 0))
+        caption26 = font6.render("BUY", True, (0, 0, 0))
+        caption27 = font6.render("YOU WIN!", True, (0, 0, 0))
         for i in range(12):
             caption1 = font2.render(str(counselors[i]), True, (255, 255, 255))
             screen.blit(caption1, (sw//2 + sw//6, sh // 60 + (i * sh//6) + scroll_dis))
@@ -208,14 +218,23 @@ def main():
         screen.blit(caption2, (sw // 4.08  - len(famount)*5, sh // 7))
         screen.blit(caption20, (sw//5-sw//100, sh//11))
 
-        font3 = pygame.font.SysFont("calibri", sh//32)
+
         caption3 = font3.render(str(famountpersecond), True, (0, 0, 0))
         caption30 = font3.render("CPS:", True, (0, 0, 0))
         screen.blit(caption30, (sw // 4.33, sh // 6+sh//32))
         screen.blit(caption3, (sw // 4.036 - len(famountpersecond) * 5, sh // 5+sh//40))
 
         shop.draw(screen)
-
+        if eathancounter < 5:
+            screen.blit(caption21, (sw//40, sh // 1.2))
+            screen.blit(caption22, (sw // 40, sh // 1.13))
+            screen.blit(caption23, (sw // 3, sh // 1.2))
+        if eathancounter == 5:
+            screen.blit(caption24, (sw//40, sh//1.2))
+            screen.blit(caption25, (sw // 40, sh // 1.13))
+            screen.blit(caption26, (sw // 3, sh // 1.2))
+        if eathancounter >= 6:
+            screen.blit(caption27, (sw//8, sh//1.2))
         pygame.draw.line(screen, (0, 0, 0), (sw // 2, 0), (sw // 2, sh), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, sh // 1.25), (sw // 2, sh // 1.25), 10)
         pygame.draw.line(screen, (0, 0, 0), (0, 0), (sw, 0), 8)
