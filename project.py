@@ -248,7 +248,7 @@ def main():
         pygame.draw.line(screen, (0, 0, 0), (sw, 0), (sw, sh), 8)  # BORDERS no touchy
         screen.blit(image13, (sw // 8.5, sh // 3.5))
        
-        pygame.display.set_caption("NGU's Project: "+ str(int(fps)))
+        pygame.display.set_caption("Counselor Clicker: "+ str(int(fps)))
         pygame.display.update()
 
 
